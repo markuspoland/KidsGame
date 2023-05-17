@@ -65,8 +65,8 @@ public class Drag : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log(collision.name);
-        Slot slot;
-        if (collision.TryGetComponent<Slot>(out slot))
+        DragSlot slot;
+        if (collision.TryGetComponent<DragSlot>(out slot))
         {
             
             if (slot.slotFor == gameObject.name)

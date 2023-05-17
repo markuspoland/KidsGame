@@ -5,6 +5,7 @@ using UnityEngine;
 public class LetterGenerator : MonoBehaviour
 {
     public List<GameObject> letters;
+    public List<LetterSlot> letterSlots;
 
     private Word word;
     void Start()
@@ -36,7 +37,16 @@ public class LetterGenerator : MonoBehaviour
             {
                 if (letter.name == slotLetter.name)
                 {
-                    Debug.Log(letter.name);
+                    foreach (var slot in letterSlots)
+                    {
+                        if (slot.AssignedLetter == null && slot.AssignedLetter != letter)
+                        {
+                            slot.AssignedLetter = letter;
+                            var instantiatedLetter = Instantiate(letter, slot.transform.position, Quaternion.identity);
+                            instantiatedLetter.name = slotLetter.name;
+                            break;
+                        }
+                    }
                 }
             }
         }
