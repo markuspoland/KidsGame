@@ -882,15 +882,15 @@ GameObject:
   - component: {fileID: 1671072148}
   - component: {fileID: 1671072147}
   - component: {fileID: 1671072149}
-  - component: {fileID: 1671072150}
   - component: {fileID: 1671072151}
+  - component: {fileID: 1671072152}
   m_Layer: 0
   m_Name: Button1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1671072147
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -984,18 +984,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.9, y: 2.52}
   m_EdgeRadius: 0
---- !u!114 &1671072150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1671072146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2087f8178179da34fb843a4041534400, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &1671072151
 Rigidbody2D:
   serializedVersion: 4
@@ -1017,6 +1005,42 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1671072152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671072146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c50779847a6b4dd4da7ad718c94e41d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  letters:
+  - {fileID: 247775630710147786, guid: 5a657102a60307648a4f953dd3427da5, type: 3}
+  - {fileID: 5617968929455458974, guid: 86737b3ec81c41d4bbe74aaad30cb7c3, type: 3}
+  - {fileID: 5766698445657160319, guid: 008f2a2383177ba48a82c3e0b6c556a7, type: 3}
+  - {fileID: 3163512841954994456, guid: 8b9ae6c96e85428409b334f473a30caf, type: 3}
+  - {fileID: 5506168880167249722, guid: 2c216fa3b025bcc46babee242d45e0f6, type: 3}
+  - {fileID: 440084478048916516, guid: bc5701712255334438328c117c322ca3, type: 3}
+  - {fileID: 5133381213439656488, guid: 6828afc051f1da94fb2bcbbb1568503f, type: 3}
+  - {fileID: 3235264057139897066, guid: 9bfc1a9a55a69b645b0f3d0db03ad752, type: 3}
+  - {fileID: 8745624912895596470, guid: 60555d86867f4e343ad4930a3ad39e06, type: 3}
+  - {fileID: 3172649618714399769, guid: ca56a28c0315b0c42865b44fd33a5e84, type: 3}
+  - {fileID: 1164133565600484947, guid: b564eb04e57dc73448277c045a07b4f8, type: 3}
+  - {fileID: 7636224104492587967, guid: d2493dcff7257c845811f04f038e2de7, type: 3}
+  - {fileID: 556692732990070972, guid: ed07f07f2318f76478b3394b00988ad0, type: 3}
+  - {fileID: 8151126533710916310, guid: 0075f8adade03d9479ea44684f3695a6, type: 3}
+  - {fileID: 8429703145351050381, guid: 342f9a772a096fd42aa281d8232e051b, type: 3}
+  - {fileID: 4021369476634795978, guid: 322ad632fc677a74688a83cd59b6fa91, type: 3}
+  - {fileID: 151179171050117795, guid: 148fb574f833947478567cfd7f217870, type: 3}
+  - {fileID: 4880146839544219644, guid: 084560a7422036b4d8e12403a8085c08, type: 3}
+  - {fileID: 1443920431279639409, guid: 64def1e7752fb9447ac8c906eb3c17a5, type: 3}
+  - {fileID: 654864088838622446, guid: 24e4134c18251364d87a8f1cdd64de4b, type: 3}
+  - {fileID: 776002501746920830, guid: b9b9a8c0b7c1ffa44a486ed0d8797133, type: 3}
+  - {fileID: 5338018250215292069, guid: a0737aed63ce04345882a25fb2e0164f, type: 3}
+  - {fileID: 4360071962510358749, guid: b313c161cd7c945478ab03d56f825b88, type: 3}
 --- !u!1 &1926263048
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,6 +1050,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1926263049}
+  - component: {fileID: 1926263050}
   m_Layer: 0
   m_Name: love
   m_TagString: Untagged
@@ -1052,6 +1077,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1926263050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926263048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afa42e7a43de3fd4d9c8cadb64ecfac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Letters:
+  - {fileID: 222120128}
+  - {fileID: 2090090091}
+  - {fileID: 1075053925}
+  - {fileID: 1543144025}
 --- !u!1 &2090090091
 GameObject:
   m_ObjectHideFlags: 0
