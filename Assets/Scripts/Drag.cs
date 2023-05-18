@@ -53,28 +53,43 @@ public class Drag : MonoBehaviour
 
         if (isOnSlot)
         {
-            transform.position = slotPosition;
-            dragging = false;
-            canDrag = false;
-        } else if (!isOnSlot)
+            FitToSlot();
+
+        }
+        else if (!isOnSlot)
         {
             transform.position = startingPosition;
         }        
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log(collision.name);
+        CheckCollision(collision);
+    }
+
+    private void CheckCollision(Collider2D collision)
+    {
         DragSlot slot;
         if (collision.TryGetComponent<DragSlot>(out slot))
         {
-            
+
             if (slot.slotFor == gameObject.name)
             {
                 slotPosition = collision.transform.position;
                 isOnSlot = true;
             }
+            else if (slot.slotFor != gameObject.name)
+            {
+                isOnSlot = false;
+            }
         }
+    }
+    private void FitToSlot()
+    {
+        transform.position = slotPosition;
+        dragging = false;
+        canDrag = false;
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
     }
 
 

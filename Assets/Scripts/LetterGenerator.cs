@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LetterGenerator : MonoBehaviour
@@ -37,18 +38,30 @@ public class LetterGenerator : MonoBehaviour
             {
                 if (letter.name == slotLetter.name)
                 {
-                    foreach (var slot in letterSlots)
+                    var randomSlotNumber = GetRandomSlotNumber();
+                    var randomSlot = letterSlots[randomSlotNumber];
+
+                    if (randomSlot.AssignedLetter != null)
                     {
-                        if (slot.AssignedLetter == null && slot.AssignedLetter != letter)
-                        {
-                            slot.AssignedLetter = letter;
-                            var instantiatedLetter = Instantiate(letter, slot.transform.position, Quaternion.identity);
-                            instantiatedLetter.name = slotLetter.name;
-                            break;
-                        }
+                        randomSlotNumber = GetRandomSlotNumber();
+                        randomSlot = letterSlots[randomSlotNumber];
                     }
+
+                    if (randomSlot.AssignedLetter == null)
+                    {
+                        randomSlot.AssignedLetter = letter;
+                        var instantiatedLetter = Instantiate(letter, randomSlot.transform.position, Quaternion.identity);
+                        instantiatedLetter.name = slotLetter.name;
+                    }
+                    else continue;
+                    break;
                 }
             }
         }
+    }
+
+    private int GetRandomSlotNumber()
+    {
+        return Random.Range(0, letterSlots.Count);
     }
 }
