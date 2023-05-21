@@ -32,28 +32,25 @@ public class LetterGenerator : MonoBehaviour
     {
         word = FindObjectOfType<Word>();
 
-        foreach (var letter in letters)
+        foreach (var slotLetter in word.SlotLetters)
         {
-            foreach (var slotLetter in word.Letters)
+            foreach (var letter in letters)
             {
                 if (letter.name == slotLetter.name)
                 {
-                    var randomSlotNumber = GetRandomSlotNumber();
-                    var randomSlot = letterSlots[randomSlotNumber];
-
-                    if (randomSlot.AssignedLetter != null)
+                    while (true)
                     {
-                        randomSlotNumber = GetRandomSlotNumber();
-                        randomSlot = letterSlots[randomSlotNumber];
-                    }
+                        var randomSlot = letterSlots[GetRandomSlotNumber()];
 
-                    if (randomSlot.AssignedLetter == null)
-                    {
-                        randomSlot.AssignedLetter = letter;
-                        var instantiatedLetter = Instantiate(letter, randomSlot.transform.position, Quaternion.identity);
-                        instantiatedLetter.name = slotLetter.name;
+                        if (randomSlot.AssignedLetter == null)
+                        {
+                            randomSlot.AssignedLetter = letter;                            
+                            var instantiatedLetter = Instantiate(letter, randomSlot.transform.position, Quaternion.identity);
+                            instantiatedLetter.name = slotLetter.name;
+                            instantiatedLetter.GetComponent<Letter>().AssignedSlot = randomSlot;
+                            break;
+                        }
                     }
-                    else continue;
                     break;
                 }
             }
