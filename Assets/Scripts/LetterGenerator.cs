@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -30,35 +31,45 @@ public class LetterGenerator : MonoBehaviour
 
     private void Generate()
     {
-        word = FindObjectOfType<Word>();
+        
 
-        foreach (var slotLetter in word.SlotLetters)
+        if (SlotsEmpty())
         {
-            foreach (var letter in letters)
+            word = FindObjectOfType<Word>();
+            foreach (var slotLetter in word.SlotLetters)
             {
-                if (letter.name == slotLetter.name)
+                foreach (var letter in letters)
                 {
-                    while (true)
+                    if (letter.name == slotLetter.name)
                     {
-                        var randomSlot = letterSlots[GetRandomSlotNumber()];
-
-                        if (randomSlot.AssignedLetter == null)
+                        while (true)
                         {
-                            randomSlot.AssignedLetter = letter;                            
-                            var instantiatedLetter = Instantiate(letter, randomSlot.transform.position, Quaternion.identity);
-                            instantiatedLetter.name = slotLetter.name;
-                            instantiatedLetter.GetComponent<Letter>().AssignedSlot = randomSlot;
-                            break;
+                            var randomSlot = letterSlots[GetRandomSlotNumber()];
+
+                            if (randomSlot.AssignedLetter == null)
+                            {
+                                randomSlot.AssignedLetter = letter;
+                                var instantiatedLetter = Instantiate(letter, randomSlot.transform.position, Quaternion.identity);
+                                instantiatedLetter.name = slotLetter.name;
+                                instantiatedLetter.GetComponent<Letter>().AssignedSlot = randomSlot;
+                                break;
+                            }
                         }
+                        break;
                     }
-                    break;
                 }
             }
         }
+        
     }
 
     private int GetRandomSlotNumber()
     {
         return Random.Range(0, letterSlots.Count);
+    }
+
+    private bool SlotsEmpty()
+    {
+        return letterSlots.All(slot => slot.AssignedLetter == null);
     }
 }

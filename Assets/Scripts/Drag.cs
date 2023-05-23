@@ -14,6 +14,7 @@ public class Drag : MonoBehaviour
     private Vector3 startingPosition;
     private Vector3 slotPosition;
     private Word word;
+    private DragSlot dragSlot;
     void Start()
     {
         startingPosition = transform.position;
@@ -50,17 +51,21 @@ public class Drag : MonoBehaviour
 
     private void OnMouseUp()
     {
-        dragging = false;
-
-        if (isOnSlot)
+        if (dragging)
         {
-            FitToSlot();
+            dragging = false;
 
+            if (isOnSlot && dragSlot.IsEmpty)
+            {
+                FitToSlot();
+
+            }
+            else //if (!isOnSlot)
+            {
+                transform.position = startingPosition;
+            }
         }
-        else if (!isOnSlot)
-        {
-            transform.position = startingPosition;
-        }        
+            
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -77,6 +82,7 @@ public class Drag : MonoBehaviour
             {
                 slotPosition = collision.transform.position;
                 word = collision.GetComponentInParent<Word>();
+                dragSlot = collision.GetComponent<DragSlot>();
                 isOnSlot = true;
             }
             else if (slot.slotFor != gameObject.name)
@@ -95,6 +101,7 @@ public class Drag : MonoBehaviour
         {
             word.LettersCompleted++;
         }
+        dragSlot.IsEmpty = false;
         word.CheckProgress();
         GetComponent<Letter>().Unassign();
     }
