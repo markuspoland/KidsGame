@@ -125,7 +125,7 @@ TextureImporter:
         width: 213
         height: 213
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -146,7 +146,7 @@ TextureImporter:
         width: 189
         height: 213
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -167,7 +167,7 @@ TextureImporter:
         width: 213
         height: 206
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -188,7 +188,7 @@ TextureImporter:
         width: 200
         height: 199
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -196,6 +196,153 @@ TextureImporter:
       bones: []
       spriteID: fa8aa289f516317409b7177942fcf14a
       internalID: -317268280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrawButton
+      rect:
+        serializedVersion: 2
+        x: 3068
+        y: 1650
+        width: 223
+        height: 219
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab991898b6f4d1b48acbc07439d2423c
+      internalID: 27664538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MusicButton
+      rect:
+        serializedVersion: 2
+        x: 2133
+        y: 1001
+        width: 207
+        height: 215
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3808b876ed71ab54e8ea2bf4960b9445
+      internalID: 1403271494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SoundsButton
+      rect:
+        serializedVersion: 2
+        x: 2137
+        y: 786
+        width: 195
+        height: 211
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3175954db03f7647896ae600d8188c1
+      internalID: 1996301410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackButton
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 122
+        width: 207
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 333a22f49fbe6454a9280de8183dfbde
+      internalID: 1118917277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MusicDisabled
+      rect:
+        serializedVersion: 2
+        x: 2539
+        y: 1001
+        width: 207
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4059c52449b418a43a8e27106a9af885
+      internalID: -754315647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DrawDisabled
+      rect:
+        serializedVersion: 2
+        x: 3490
+        y: 1654
+        width: 207
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7692b926994cfc1469b713e530f0070f
+      internalID: -1835968449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SoundsDisabled
+      rect:
+        serializedVersion: 2
+        x: 2539
+        y: 782
+        width: 211
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a84bfc95bef319a4d8a5f9617b9a67fb
+      internalID: -2102487217
       vertices: []
       indices: 
       edges: []
@@ -211,9 +358,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      DrawDisabled: -1835968449
       Button_1: 1161731362
+      BackButton: 1118917277
       Button_3: -317268280
+      DrawButton: 27664538
       Button_2: 1576174632
+      SoundsDisabled: -2102487217
+      MusicButton: -23698108
+      SoundsButton: 1996301410
+      MusicDisabled: -754315647
       Button_0: -1915204142
   spritePackingTag: 
   pSDRemoveMatte: 0
