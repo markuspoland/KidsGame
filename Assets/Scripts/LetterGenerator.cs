@@ -9,7 +9,11 @@ public class LetterGenerator : MonoBehaviour
     public List<GameObject> letters;
     public List<LetterSlot> letterSlots;
 
+    public GameObject spawnEffect;
+    public AudioManager audioManager;
+
     private Word word;
+    private List<GameObject> instantiatedLetters = new List<GameObject>();
     void Start()
     {
         
@@ -50,16 +54,22 @@ public class LetterGenerator : MonoBehaviour
                             {
                                 randomSlot.AssignedLetter = letter;
                                 var instantiatedLetter = Instantiate(letter, randomSlot.transform.position, Quaternion.identity);
+                                instantiatedLetter.GetComponent<SpriteRenderer>().enabled = false;
+                                instantiatedLetters.Add(instantiatedLetter);
                                 instantiatedLetter.name = slotLetter.name;
                                 instantiatedLetter.GetComponent<Letter>().AssignedSlot = randomSlot;
                                 break;
                             }
                         }
+                        
+
                         break;
                     }
                 }
             }
         }
+
+        StartCoroutine(Delay(0.5f));
         
     }
 
@@ -71,5 +81,17 @@ public class LetterGenerator : MonoBehaviour
     private bool SlotsEmpty()
     {
         return letterSlots.All(slot => slot.AssignedLetter == null);
+    }
+
+    IEnumerator Delay(float time)
+    {
+        foreach (var letter in instantiatedLetters)
+        {            
+            letter.GetComponent<SpriteRenderer>().enabled = true;
+            Instantiate(spawnEffect, letter.transform.position, Quaternion.identity).transform.SetAsFirstSibling();
+            audioManager.PlaySound(Sound.SPAWN);
+            yield return new WaitForSeconds(time);
+        }       
+        
     }
 }

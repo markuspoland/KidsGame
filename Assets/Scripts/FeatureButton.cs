@@ -55,7 +55,7 @@ public class FeatureButton : MonoBehaviour
                 //TODO: Turn off music
                 break;
             case Feature.SOUNDS:
-                //TODO: Turn off sounds
+                FindObjectOfType<AudioManager>().SoundEnabled = false;
                 break;
         }
     }
@@ -70,7 +70,7 @@ public class FeatureButton : MonoBehaviour
                 //TODO: Turn on music
                 break;
             case Feature.SOUNDS:
-                //TODO: Turn on sounds
+                FindObjectOfType<AudioManager>().SoundEnabled = true;
                 break;
         }
     }
