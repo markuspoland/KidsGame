@@ -39,17 +39,32 @@ public class Word : MonoBehaviour
 
     IEnumerator Complete()
     {
-        foreach(var slotLetter in SlotLetters)
+        //foreach(var slotLetter in SlotLetters)
+        //{
+        //    InstantiateCompleteEffect(slotLetter.transform.position);
+        //    foreach (var letter in letterGenerator.InstantiatedLetters)
+        //    {
+        //        if (letter.name == slotLetter.name)
+        //        {
+        //            letter.GetComponent<SpriteRenderer>().enabled = false;
+        //            break;
+        //        }
+        //    }
+        //    AudioManager.PlaySound(Sound.LetterComplete);
+        //    yield return new WaitForSeconds(0.5f);
+        //}
+
+        for (int i = 0; i < SlotLetters.Count; i++)
         {
+            var slotLetter = SlotLetters[i];
+            var letter = letterGenerator.InstantiatedLetters.Find(l => l.name == slotLetter.name && l.GetComponent<SpriteRenderer>().enabled == true);
             InstantiateCompleteEffect(slotLetter.transform.position);
-            foreach (var letter in letterGenerator.InstantiatedLetters)
+            if (letter != null)
             {
-                if (letter.name == slotLetter.name)
-                {
-                    letter.GetComponent<SpriteRenderer>().enabled = false;
-                    break;
-                }
+                Debug.Log(letter.GetComponent<SpriteRenderer>().enabled);
+                letter.GetComponent<SpriteRenderer>().enabled = false;
             }
+
             AudioManager.PlaySound(Sound.LetterComplete);
             yield return new WaitForSeconds(0.5f);
         }
