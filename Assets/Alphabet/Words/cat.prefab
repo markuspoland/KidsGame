@@ -51,6 +51,7 @@ MonoBehaviour:
   - {fileID: 7764731552307051658}
   - {fileID: 7944978408165259810}
   - {fileID: 8054603673929783781}
+  completeEffect: {fileID: 3767919958197916780, guid: 530f0cf8d368a6140aab4685b5d4a367, type: 3}
   LettersCompleted: 0
 --- !u!1001 &2919020315243770205
 PrefabInstance:

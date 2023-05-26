@@ -13,10 +13,12 @@ public class LetterGenerator : MonoBehaviour
     public AudioManager audioManager;
 
     private Word word;
-    private List<GameObject> instantiatedLetters = new List<GameObject>();
+    public List<GameObject> InstantiatedLetters { get; set; } = new List<GameObject>();
+    private bool spawned;
+
     void Start()
     {
-        
+        spawned = false;
     }
 
     // Update is called once per frame
@@ -55,7 +57,7 @@ public class LetterGenerator : MonoBehaviour
                                 randomSlot.AssignedLetter = letter;
                                 var instantiatedLetter = Instantiate(letter, randomSlot.transform.position, Quaternion.identity);
                                 instantiatedLetter.GetComponent<SpriteRenderer>().enabled = false;
-                                instantiatedLetters.Add(instantiatedLetter);
+                                InstantiatedLetters.Add(instantiatedLetter);
                                 instantiatedLetter.name = slotLetter.name;
                                 instantiatedLetter.GetComponent<Letter>().AssignedSlot = randomSlot;
                                 break;
@@ -69,8 +71,28 @@ public class LetterGenerator : MonoBehaviour
             }
         }
 
-        StartCoroutine(Delay(0.5f));
+        if (!spawned) StartCoroutine(Delay(0.5f));
         
+    }
+
+    public void ResetGenerator()
+    {
+        spawned = false;
+
+        foreach (var letter in InstantiatedLetters)
+        {
+            Destroy(letter);
+        }
+
+        InstantiatedLetters = new List<GameObject>();
+        word = null;
+
+        foreach(var slot in letterSlots)
+        {
+            slot.AssignedLetter = null;
+        }
+
+        //letterSlots.All(slot => slot.AssignedLetter = null);
     }
 
     private int GetRandomSlotNumber()
@@ -85,13 +107,14 @@ public class LetterGenerator : MonoBehaviour
 
     IEnumerator Delay(float time)
     {
-        foreach (var letter in instantiatedLetters)
+        foreach (var letter in InstantiatedLetters)
         {            
             letter.GetComponent<SpriteRenderer>().enabled = true;
             Instantiate(spawnEffect, letter.transform.position, Quaternion.identity).transform.SetAsFirstSibling();
-            audioManager.PlaySound(Sound.SPAWN);
+            audioManager.PlaySound(Sound.Spawn);
             yield return new WaitForSeconds(time);
-        }       
-        
+        }
+
+        spawned = true;
     }
 }

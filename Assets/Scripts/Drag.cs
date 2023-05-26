@@ -15,11 +15,14 @@ public class Drag : MonoBehaviour
     private Vector3 slotPosition;
     private Word word;
     private DragSlot dragSlot;
+    private AudioManager audioManager;
+
     void Start()
     {
         startingPosition = transform.position;
         canDrag = true;
         isOnSlot = false;
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -63,6 +66,7 @@ public class Drag : MonoBehaviour
             else //if (!isOnSlot)
             {
                 transform.position = startingPosition;
+                audioManager.PlaySound(Sound.WrongSlot);
             }
         }
             
@@ -97,12 +101,20 @@ public class Drag : MonoBehaviour
         dragging = false;
         canDrag = false;
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
+
         if (word != null)
         {
             word.LettersCompleted++;
         }
-        dragSlot.IsEmpty = false;
+        dragSlot.IsEmpty = false;        
         word.CheckProgress();
+
+        if (!word.Completed)
+        {
+            word.AudioManager.PlaySound(Sound.LetterComplete);
+            word.InstantiateCompleteEffect(slotPosition);
+        }   
+        
         GetComponent<Letter>().Unassign();
     }
 

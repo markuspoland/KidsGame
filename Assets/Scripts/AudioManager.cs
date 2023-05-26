@@ -6,6 +6,9 @@ public class AudioManager : MonoBehaviour
 {
     [Header("Letter Sounds")]
     public AudioClip letterSpawn;
+    public AudioClip letterComplete;
+    public AudioClip wordComplete;
+    public AudioClip wrongSlot;
 
     public bool SoundEnabled { get; set; } = true;
     public bool MusicEnabled { get; set; } = true;
@@ -28,8 +31,17 @@ public class AudioManager : MonoBehaviour
         {
             switch (sound)
             {
-                case Sound.SPAWN:
+                case Sound.Spawn:
                     audioSource.PlayOneShot(letterSpawn);
+                    break;
+                case Sound.LetterComplete:
+                    audioSource.PlayOneShot(letterComplete);
+                    break;
+                case Sound.WordComplete:
+                    audioSource.PlayOneShot(wordComplete);
+                    break;
+                case Sound.WrongSlot:
+                    audioSource.PlayOneShot(wrongSlot); 
                     break;
             }
         }

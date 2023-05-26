@@ -4,5 +4,8 @@ using UnityEngine;
 
 public enum Sound
 {
-    SPAWN = 0,
+    Spawn = 0,
+    LetterComplete = 1,
+    WordComplete = 2,
+    WrongSlot = 3,
 }
