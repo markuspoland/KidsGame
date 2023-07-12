@@ -314,7 +314,7 @@ TextureImporter:
         width: 207
         height: 207
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -335,7 +335,7 @@ TextureImporter:
         width: 211
         height: 215
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -343,6 +343,48 @@ TextureImporter:
       bones: []
       spriteID: a84bfc95bef319a4d8a5f9617b9a67fb
       internalID: -2102487217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MenuButton
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 2405
+        width: 433
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b73c86f1f678c04a8ae5c06860229b8
+      internalID: 1457177334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MenuButtonDisabled
+      rect:
+        serializedVersion: 2
+        x: 1532
+        y: 2412
+        width: 443
+        height: 199
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d39e93048dc338d4b9f0b6f9311bd57b
+      internalID: -1138279347
       vertices: []
       indices: 
       edges: []
@@ -361,9 +403,11 @@ TextureImporter:
       DrawDisabled: -1835968449
       Button_1: 1161731362
       BackButton: 1118917277
+      MenuButton: 1457177334
       Button_3: -317268280
       DrawButton: 27664538
       Button_2: 1576174632
+      MenuButtonDisabled: -1138279347
       SoundsDisabled: -2102487217
       MusicButton: -23698108
       SoundsButton: 1996301410

@@ -20,7 +20,7 @@ public class WordSpawner : MonoBehaviour
 
     public void Spawn()
     {
-        if (words.Any(w => w.activeInHierarchy)) return;
+        if (words.Any(w => w.activeInHierarchy) || words.Count <= 0) return;
 
         words[GetRandomWordNumber()].SetActive(true);
     }
@@ -28,5 +28,10 @@ public class WordSpawner : MonoBehaviour
     private int GetRandomWordNumber()
     {
         return Random.Range(0, words.Count);
+    }
+
+    public void RemoveWord(GameObject word)
+    {
+        words.Remove(word);
     }
 }

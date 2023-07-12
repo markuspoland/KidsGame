@@ -84,5 +84,6 @@ public class Word : MonoBehaviour
         Completed = false;
         gameObject.SetActive(false);
         FindObjectOfType<WordSpawner>().Spawn();
+        FindObjectOfType<WordSpawner>().RemoveWord(gameObject);
     }
 }
