@@ -12,6 +12,8 @@ public class Word : MonoBehaviour
 
     private LetterGenerator letterGenerator;
     private int CompletionCount;
+
+    [HideInInspector]
     public int LettersCompleted;
 
     private void Start()

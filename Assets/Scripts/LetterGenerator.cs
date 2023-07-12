@@ -14,11 +14,15 @@ public class LetterGenerator : MonoBehaviour
 
     private Word word;
     public List<GameObject> InstantiatedLetters { get; set; } = new List<GameObject>();
+
     private bool spawned;
+    private bool canPlaySound;
+
 
     void Start()
     {
         spawned = false;
+        canPlaySound = true;
     }
 
     // Update is called once per frame
@@ -29,9 +33,10 @@ public class LetterGenerator : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (Input.GetMouseButtonDown(0)) 
+        if (Input.GetMouseButtonDown(0) && canPlaySound) 
         {
             Generate();
+            //canPlaySound = true;
         }
     }
 
@@ -72,7 +77,6 @@ public class LetterGenerator : MonoBehaviour
         }
 
         if (!spawned) StartCoroutine(Delay(0.5f));
-        
     }
 
     public void ResetGenerator()
@@ -91,8 +95,6 @@ public class LetterGenerator : MonoBehaviour
         {
             slot.AssignedLetter = null;
         }
-
-        //letterSlots.All(slot => slot.AssignedLetter = null);
     }
 
     private int GetRandomSlotNumber()
@@ -100,21 +102,21 @@ public class LetterGenerator : MonoBehaviour
         return Random.Range(0, letterSlots.Count);
     }
 
-    private bool SlotsEmpty()
-    {
-        return letterSlots.All(slot => slot.AssignedLetter == null);
-    }
+    private bool SlotsEmpty() => letterSlots.All(slot => slot.AssignedLetter == null);    
 
     IEnumerator Delay(float time)
     {
+        canPlaySound = false;
+
         foreach (var letter in InstantiatedLetters)
-        {            
+        {
             letter.GetComponent<SpriteRenderer>().enabled = true;
             Instantiate(spawnEffect, letter.transform.position, Quaternion.identity).transform.SetAsFirstSibling();
-            audioManager.PlaySound(Sound.Spawn);
+            audioManager.PlaySound(Sound.Spawn);            
             yield return new WaitForSeconds(time);
         }
 
+        canPlaySound = true;
         spawned = true;
     }
 }
