@@ -377,7 +377,7 @@ TextureImporter:
         width: 443
         height: 199
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -385,6 +385,27 @@ TextureImporter:
       bones: []
       spriteID: d39e93048dc338d4b9f0b6f9311bd57b
       internalID: -1138279347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MenuButtonRed
+      rect:
+        serializedVersion: 2
+        x: 1082
+        y: 2409
+        width: 436
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab67d4f5e4e747b4596cfba933653cf3
+      internalID: 1741191798
       vertices: []
       indices: 
       edges: []
@@ -412,6 +433,7 @@ TextureImporter:
       MusicButton: -23698108
       SoundsButton: 1996301410
       MusicDisabled: -754315647
+      MenuButtonRed: 1741191798
       Button_0: -1915204142
   spritePackingTag: 
   pSDRemoveMatte: 0

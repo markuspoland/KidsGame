@@ -40,22 +40,7 @@ public class Word : MonoBehaviour
     }
 
     IEnumerator Complete()
-    {
-        //foreach(var slotLetter in SlotLetters)
-        //{
-        //    InstantiateCompleteEffect(slotLetter.transform.position);
-        //    foreach (var letter in letterGenerator.InstantiatedLetters)
-        //    {
-        //        if (letter.name == slotLetter.name)
-        //        {
-        //            letter.GetComponent<SpriteRenderer>().enabled = false;
-        //            break;
-        //        }
-        //    }
-        //    AudioManager.PlaySound(Sound.LetterComplete);
-        //    yield return new WaitForSeconds(0.5f);
-        //}
-
+    {       
         for (int i = 0; i < SlotLetters.Count; i++)
         {
             var slotLetter = SlotLetters[i];
@@ -63,7 +48,6 @@ public class Word : MonoBehaviour
             InstantiateCompleteEffect(slotLetter.transform.position);
             if (letter != null)
             {
-                Debug.Log(letter.GetComponent<SpriteRenderer>().enabled);
                 letter.GetComponent<SpriteRenderer>().enabled = false;
             }
 
@@ -83,7 +67,33 @@ public class Word : MonoBehaviour
         LettersCompleted = 0;
         Completed = false;
         gameObject.SetActive(false);
-        FindObjectOfType<WordSpawner>().Spawn();
-        FindObjectOfType<WordSpawner>().RemoveWord(gameObject);
+
+        var spawner = FindObjectOfType<WordSpawner>();
+        spawner.Spawn();
+        spawner.RemoveWord(gameObject);
+
+        CountCompletedWords();
+
+    }
+
+    private void CountCompletedWords()
+    {
+        var wordCounter = FindObjectOfType<WordCounter>();
+
+        if (wordCounter != null)
+        {
+            wordCounter.CompletedWordsOverall++;
+
+            if (wordCounter.CompletedWordsPartial < 25)
+            {
+                wordCounter.CompletedWordsPartial++;
+
+                if (wordCounter.CompletedWordsPartial == 25)
+                {
+                    wordCounter.DisplayAcknowledgement();
+                    wordCounter.CompletedWordsPartial = 0;
+                }
+            }  
+        }
     }
 }
