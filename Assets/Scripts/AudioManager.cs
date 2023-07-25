@@ -47,4 +47,9 @@ public class AudioManager : MonoBehaviour
         }
         
     }
+
+    public bool IsSoundMuted()
+    {
+        return SoundEnabled;
+    }
 }

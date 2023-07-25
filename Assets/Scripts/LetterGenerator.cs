@@ -21,6 +21,7 @@ public class LetterGenerator : MonoBehaviour
 
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         spawned = false;
         canPlaySound = true;
     }

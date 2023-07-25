@@ -13,8 +13,7 @@ public class FeatureButton : MonoBehaviour
 
     void Start()
     {
-        FeatureEnabled = true;
-        GetComponent<SpriteRenderer>().sprite = enabledSprite; 
+        CheckStatus();
     }
 
     private void OnMouseDown()
@@ -24,14 +23,15 @@ public class FeatureButton : MonoBehaviour
             if (FeatureEnabled)
             {
                 Disable();
-            } else if (!FeatureEnabled)
+            }
+            else if (!FeatureEnabled)
             {
                 Enable();
             }
         }
     }
 
-    
+
 
     public void Enable()
     {
@@ -52,7 +52,8 @@ public class FeatureButton : MonoBehaviour
         switch (feature)
         {
             case Feature.MUSIC:
-                //TODO: Turn off music
+                FindObjectOfType<AudioManager>().MusicEnabled = false;
+                FindObjectOfType<Music>().GetComponent<AudioSource>().mute = true;
                 break;
             case Feature.SOUNDS:
                 FindObjectOfType<AudioManager>().SoundEnabled = false;
@@ -67,11 +68,36 @@ public class FeatureButton : MonoBehaviour
         switch (feature)
         {
             case Feature.MUSIC:
-                //TODO: Turn on music
+                FindObjectOfType<AudioManager>().MusicEnabled = true;
+                FindObjectOfType<Music>().GetComponent<AudioSource>().mute = false;
                 break;
             case Feature.SOUNDS:
                 FindObjectOfType<AudioManager>().SoundEnabled = true;
                 break;
+        }
+    }
+
+    private void CheckStatus()
+    {
+        var audioManager = FindObjectOfType<AudioManager>();
+
+        if (audioManager != null)
+        {
+            switch (feature)
+            {
+                case Feature.SOUNDS:
+                    if (!audioManager.SoundEnabled)
+                        GetComponent<SpriteRenderer>().sprite = disabledSprite;
+                    else if (audioManager.SoundEnabled)
+                        GetComponent<SpriteRenderer>().sprite = enabledSprite;
+                    break;
+                case Feature.MUSIC:
+                    if (!audioManager.MusicEnabled)
+                        GetComponent<SpriteRenderer>().sprite = disabledSprite;
+                    else if (audioManager.MusicEnabled)
+                        GetComponent<SpriteRenderer>().sprite = enabledSprite;
+                    break;
+            }
         }
     }
 }
